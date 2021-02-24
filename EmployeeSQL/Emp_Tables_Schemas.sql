@@ -51,3 +51,22 @@ SELECT * FROM departments;
 SELECT * FROM dept_employees;
 SELECT * FROM dept_managers;
 SELECT * FROM salaries;
+-----------------------------------------------------------------------------------------------------------
+-- Altering our tables to add our foreign key constraints and it's references
+ALTER TABLE employees
+	ADD CONSTRAINT employees_title_id_fkey FOREIGN KEY (emp_title_id) REFERENCES titles(title_id);
+
+ALTER TABLE dept_employees
+	ADD CONSTRAINT dept_employees_emp_no_fkey FOREIGN KEY (emp_no) REFERENCES employees(emp_no);
+
+ALTER TABLE dept_employees
+	ADD CONSTRAINT dept_employees_dept_no_fkey FOREIGN KEY (dept_no) REFERENCES departments(dept_no);
+
+ALTER TABLE dept_managers
+	ADD CONSTRAINT dept_managers_dept_no_fkey FOREIGN KEY (dept_no) REFERENCES departments(dept_no);
+
+ALTER TABLE dept_managers
+	ADD CONSTRAINT dept_managers_emp_no_fkey FOREIGN KEY (emp_no) REFERENCES employees(emp_no);
+
+ALTER TABLE salaries
+	ADD CONSTRAINT salaries_emp_no_fkey FOREIGN KEY (emp_no) REFERENCES employees(emp_no);
