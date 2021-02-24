@@ -27,3 +27,15 @@ FROM departments
 	dept_managers.dept_no=departments.dept_no
 		JOIN employees ON
 		employees.emp_no = dept_managers.emp_no;
+		
+-- List the department of each employee with the following information:
+-- -- employee number, last name, first name, and department name.
+SELECT employees.emp_no,
+	employees.last_name,
+	employees.first_name,
+	departments.dept_name
+FROM departments
+	JOIN dept_employees ON
+	dept_employees.dept_no=departments.dept_no
+		JOIN employees ON
+		employees.emp_no = dept_employees.emp_no;
